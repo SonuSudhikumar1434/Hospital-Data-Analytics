@@ -1,0 +1,1 @@
+CREATE VIEW BRONZE.Encounters AS SELECT * FROM read_csv_auto('https://docs.google.com/spreadsheets/d/e/2PACX-1vR2GcKyYBKUCNMoacEk82cX7FulegFDAvy_Q5TaZOhgJ9J04s7Ozh99SGvIL4WnboT1m7bXgIB9OHmM/pub?gid=1420469253&single=true&output=csv');
