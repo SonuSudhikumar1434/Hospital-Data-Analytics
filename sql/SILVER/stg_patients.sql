@@ -18,7 +18,7 @@ SELECT
     END AS gender,
     DATE_DIFF('year', CAST(BIRTHDATE AS DATE), CURRENT_DATE) AS age_years,
     UPPER(TRIM(MARITAL)) AS marital_status,
-    upper(LOWER(TRIM(MAIDEN))) AS maiden_name,
+    REGEXP_REPLACE(TRIM(MAIDEN), '[0-9]+', '', 'g') AS maiden_name,
     UPPER(TRIM(RACE)) AS race,
     UPPER(TRIM(ETHNICITY)) AS ethnicity,
     REGEXP_REPLACE(TRIM(BIRTHPLACE), '\s+', ' ') AS birth_place,
