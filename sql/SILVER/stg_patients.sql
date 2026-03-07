@@ -7,9 +7,9 @@ SELECT
        WHEN DEATHDATE IS NULL THEN 'ALIVE'
          ELSE 'DIED'
     END AS life_status,
-    UPPER(TRIM(PREFIX)) AS name_prefix,
-    upper(LOWER(TRIM(FIRST))) AS first_name,
-    upper(LOWER(TRIM(LAST))) AS last_name,
+    REPLACE(TRIM(PREFIX), '.', '') AS name_prefix,
+    REGEXP_REPLACE(TRIM(FIRST), '[0-9]+', '', 'g') AS first_name,
+    REGEXP_REPLACE(TRIM(LAST), '[0-9]+', '', 'g') AS last_name,
     UPPER(TRIM(SUFFIX)) AS name_suffix,
     CASE
         WHEN UPPER(GENDER) IN ('M','MALE') THEN 'MALE'
@@ -21,7 +21,7 @@ SELECT
     upper(LOWER(TRIM(MAIDEN))) AS maiden_name,
     UPPER(TRIM(RACE)) AS race,
     UPPER(TRIM(ETHNICITY)) AS ethnicity,
-    TRIM(BIRTHPLACE) AS birth_place,
+    REGEXP_REPLACE(TRIM(BIRTHPLACE), '\s+', ' ') AS birth_place,
     TRIM(ADDRESS) AS address,
     UPPER(TRIM(CITY)) AS city,
     UPPER(TRIM(STATE)) AS state,
