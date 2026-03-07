@@ -20,7 +20,6 @@ SELECT
       state,
       county,
       zip,
-      
       latitude,
       longitude
    
