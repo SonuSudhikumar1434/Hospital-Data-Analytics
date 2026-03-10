@@ -1,6 +1,10 @@
+
 CREATE OR REPLACE TABLE gold.fact_encounters AS
 select
-
+    encounter_id,
+    patient_id,
+    organization_id,
+    payer_id,
     encounter_start,
     encounter_stop,
     encounter_class,
