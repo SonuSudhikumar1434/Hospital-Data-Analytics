@@ -1,3 +1,5 @@
 venv
 hospital.duckdb
 hospital.duckdb.wal
+
+
