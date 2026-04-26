@@ -1,0 +1,11 @@
+CREATE OR REPLACE TABLE GOLD.mart_uni_patients_admit_each_quarter AS
+SELECT COUNT(DISTINCT patient_id) AS unique_patients_count,
+       EXTRACT(YEAR FROM encounter_start) AS year,
+       EXTRACT(QUARTER FROM encounter_start) AS quarter
+FROM GOLD.fact_encounters
+GROUP BY 
+    EXTRACT(YEAR FROM encounter_start) ,
+    EXTRACT(QUARTER FROM encounter_start)
+ORDER BY 
+    year,
+    quarter; 

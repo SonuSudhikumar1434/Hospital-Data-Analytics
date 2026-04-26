@@ -1,0 +1,8 @@
+CREATE OR REPLACE TABLE GOLD.mart_payer_avg_claim_cost AS 
+SELECT p.payer_name,
+       e.payer_id,
+       ROUND(AVG(e.total_claim_cost),2)AS average
+FROM GOLD.fact_encounters e
+LEFT JOIN GOLD.dim_payers p
+ON e.payer_id=p.payer_id
+GROUP BY e.payer_id, p.payer_name;
