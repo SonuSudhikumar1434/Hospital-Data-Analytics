@@ -1,0 +1,25 @@
+CREATE OR REPLACE TABLE GOLD.mart_uni_patients_admit_each_quartermart_encounter_by_year AS
+WITH calculations AS(
+                    SELECT encounter_class,
+                           YEAR (encounter_start)AS year,
+                           count(encounter_id) AS count
+                    FROM GOLD.fact_encounters
+                    group by encounter_class,
+                           YEAR (encounter_start)
+),
+calculation1  AS(
+                    SELECT year,
+                           SUM(count)AS total_count
+                    FROM calculations
+                    GROUP BY year
+)
+SELECT c.encounter_class,
+       c.year,
+       c.count,
+       c1.total_count,
+       ROUND((c.count*100/c1.total_count),2)AS percentage
+FROM calculations c
+JOIN calculation1 c1
+ON c.year=c1.year
+ORDER BY c.year,
+         c.encounter_class;

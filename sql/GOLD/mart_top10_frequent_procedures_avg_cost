@@ -1,0 +1,26 @@
+CREATE OR REPLACE TABLE GOLD.mart_top10_frequent_procedures__avg_cost AS
+WITH calculations AS (
+SELECT procedure_code,
+       procedure_description,
+       count(*)AS procedure_count,
+       ROUND(AVG(base_encounter_cost),2)AS average
+       
+FROM GOLD.fact_procedures
+GROUP BY procedure_code,
+         procedure_description
+         ),
+calculations1 AS(
+SELECT procedure_code,
+       procedure_description,
+       procedure_count,
+       average,
+       ROW_NUMBER()OVER(ORDER BY procedure_count DESC )AS rn,
+       average
+FROM calculations)
+SELECT procedure_description,
+       procedure_code,
+       procedure_count,
+       average,
+       rn
+FROM calculations1
+WHERE rn<=10;

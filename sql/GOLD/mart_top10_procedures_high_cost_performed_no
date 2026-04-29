@@ -1,0 +1,25 @@
+CREATE OR REPLACE TABLE GOLD.mart_top10_procedures_high_cost__performed_no
+ AS
+WITH calculations AS(
+                     SELECT procedure_description,
+                            procedure_code,
+                            COUNT(*)AS count,
+                            ROUND(AVG(base_encounter_cost),0)AS average,
+                    FROM GOLD.fact_procedures
+                    GROUP BY procedure_description,
+                             procedure_code),
+calculations1 AS(
+                    SELECT procedure_description,
+                           procedure_code,
+                           count,
+                           average,
+                           ROW_NUMBER()OVER(ORDER BY average DESC) AS rn
+FROM calculations)
+
+SELECT  procedure_description,
+        procedure_code,
+        average,
+        rn,
+        count
+FROM calculations1
+WHERE rn<=10;
