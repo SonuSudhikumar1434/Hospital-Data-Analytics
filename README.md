@@ -66,9 +66,9 @@ Hospital-Data-Analytics/
 │   └── looker_studio_dashboard_links.md
 │
 ├── screenshots/
-│   ├── dashboard_overview.png
-│   ├── hospital_dashboard.png
-│   └── architecture_diagram.png
+│   ├── Business_Summary.png
+│   ├── Hospital_Performance_Dashboard.png
+│   └── Insights_and_Trends_Analysis.png
 │
 ├── sql/
 │   │
