@@ -37,6 +37,10 @@ The project follows a modern data engineering workflow including data ingestion,
 
 ---
 
+## 🔗 Live Dashboard
+
+[Click here to view dashboard](https://datastudio.google.com/reporting/dad5bf02-36a5-4f0e-b0c0-a14370159624)
+
 # Medallion Architecture
 
 ## Bronze Layer
@@ -58,8 +62,9 @@ The project follows a modern data engineering workflow including data ingestion,
 
 ---
 
-# Project Structure
+## 📁 Project Structure
 
+```
 Hospital-Data-Analytics/
 │
 ├── dashboards/
@@ -71,7 +76,6 @@ Hospital-Data-Analytics/
 │   └── Insights_and_Trends_Analysis.png
 │
 ├── sql/
-│   │
 │   ├── bronze/
 │   │   ├── bronze_encounters.sql
 │   │   ├── bronze_organization.sql
@@ -87,7 +91,6 @@ Hospital-Data-Analytics/
 │   │   └── stg_procedures.sql
 │   │
 │   └── gold/
-│       │
 │       ├── dimensions/
 │       │   ├── dim_organization.sql
 │       │   ├── dim_patients.sql
@@ -108,7 +111,6 @@ Hospital-Data-Analytics/
 ├── README.md
 ├── .gitignore
 └── hospital.duckdb
-
 ---
 
 # Dashboard Features
